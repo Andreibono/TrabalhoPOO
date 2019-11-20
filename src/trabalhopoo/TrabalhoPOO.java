@@ -1,22 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalhopoo;
 
 /**
  *
- * @author Andrei
+ * @author Andrei e Bruno
  */
-public class TrabalhoPOO {
+public class TrabalhoPOO{
 
-    /**
-     * @param args the command line arguments
-     */
-    //public static void main(String[] args) {
-        
-        // TODO code application logic here
-    //}
+    private static Arena arena;
     
+    public TrabalhoPOO(){
+        arena = new Arena(10,5);
+        
+    }
+
+    public static void main(String args[]) {
+        TrabalhoPOO game = new TrabalhoPOO();
+        arena.desenharTabuleiro();
+        
+
+    }
+
+   
 }
