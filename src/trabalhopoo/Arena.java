@@ -6,52 +6,51 @@ package trabalhopoo;
  */
 public class Arena {
 
+    /*Dimensões da Arena*/
     private final int comprimento;
-    private final int altura;
-    private  char tabuleiro[][];
+    private final int largura;
 
-    public Arena(int comprimento, int altura) {
+    /*Tabuleiro e Matriz Arena*/
+    private int[][] matrizArena;
+
+    public Arena(int comprimento, int largura) {
 
         this.comprimento = comprimento;
-        this.altura = altura;
-        this.criarArena();
+        this.largura = largura;
+        this.matrizArena = new int[comprimento][largura];
     }
 
-    public void criarArena() {
+    public void contruindoArena() {
 
-        this.tabuleiro = new char[comprimento][altura];
-        for(int y = 0; this.altura > y; y++){
-            for(int x = 0; this.comprimento > x; x++){
-            
-                this.tabuleiro[x][y] = '';
+        for (int x = 0; x < comprimento; x++) {
+            for (int y = 0; y < largura; y++) {
 
-            
+                this.matrizArena[x][y] = 0;
             }
         }
     }
 
-    public boolean modificarArena(int x, int y, char novo){
-    
-        if(this.comprimento >= x || this.altura >= y)
-        {
-            this.tabuleiro[x][y] = novo;
-            return true;
-        }
-        return false;
+    public void setArena(int x, int y, int objeto) {
+
+        this.matrizArena[x][y] = objeto;
     }
 
-    public void desenharTabuleiro(){
-        
-   
-        for(int y = 0; this.altura > y; y++){
-            for(int x = 0; this.comprimento > x; x++){
-            
-                System.out.print(tabuleiro[x][y]);
+    public void desenharArena() {
 
-            
+        for (int x = 0; x < comprimento; x++) {
+            for (int y = 0; y < largura; y++) {
+
+                if (this.matrizArena[x][y] == 0) {
+                    System.out.print("");
+                }
+                
+                 if (!(this.matrizArena[x][y] == 0)) {
+                    System.out.print("®");
+                }
             }
             System.out.print("\n");
         }
+
     }
 
 }
