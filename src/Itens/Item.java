@@ -4,13 +4,13 @@ package Itens;
  *
  * @author Andrei
  */
-public abstract class itens {
+public abstract class Item {
     
     private String nome;
     private int coeficienteDeDadno;
     private float alcance;
     
-    public itens(String nome, int coeficienteDeDano, float alcance){
+    public Item(String nome, int coeficienteDeDano, float alcance){
         
         this.nome = nome;
         this.coeficienteDeDadno = coeficienteDeDano;
