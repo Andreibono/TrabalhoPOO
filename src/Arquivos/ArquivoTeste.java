@@ -1,4 +1,4 @@
-package trabalhopoo;
+package Arquivos;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,13 +8,13 @@ import java.util.Scanner;
  *
  * @author Bruno
  */
-public class Arquivo {
+public class ArquivoTeste {
     
     private int coeficienteDeDano;
     private int alcance;
     
 public void lerArquivo(){
-    File file = new File("c:\\temp\\teste.txt");
+    File file = new File("src\\Arquivos\\Escopeta.txt");
     Scanner sc = null;
     try {
         sc = new Scanner(file);

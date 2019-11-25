@@ -1,6 +1,6 @@
 package trabalhopoo;
 
-import trabalhopoo.Arquivo;
+import Arquivos.ArquivoTeste;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -35,7 +35,7 @@ public class Game implements Runnable, KeyListener{
         arena.setArena(0, 0, 1);
         arena.setArena(9, 19, 1);
         
-        Arquivo arquivo = new Arquivo();
+        ArquivoTeste arquivo = new ArquivoTeste();
         //arena.desenharArena();
         //game.comecarJogo();
         arquivo.lerArquivo();

@@ -1,14 +1,14 @@
-
-package personagens ;
+package personagens;
 
 public abstract class Robo {
+
     private String nome;
     private Double vida;
     private Double armadura;
-    
-  public Robo (){
-      
-  }  
+
+    public Robo() {
+
+    }
 
     public Robo(String nome, Double vida, Double armadura) {
         this.nome = nome;
@@ -39,5 +39,5 @@ public abstract class Robo {
     public void setArmadura(Double armadura) {
         this.armadura = armadura;
     }
- 
+
 }
