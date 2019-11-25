@@ -1,5 +1,7 @@
 package trabalhopoo;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -7,14 +9,16 @@ import java.util.logging.Logger;
  *
  * @author Bruno
  */
-public class Game implements Runnable {
+public class Game implements Runnable, KeyListener{
 
     /*Variáveis do loop do jogo*/
-    private static Boolean estaRodando;
+    private static boolean estaRodando;
     private static Thread thread;
+    private static boolean querJogar;
     
     /*Arena*/
     private static Arena arena; 
+   
     
     public Game() {
         
@@ -23,12 +27,18 @@ public class Game implements Runnable {
     }
 
     public static void main(String args[]) {
-
+        
         Game game = new Game();
         arena.contruindoArena();
         arena.setArena(0, 0, 1);
         arena.setArena(9, 19, 1);
-        arena.desenharArena();
+        
+        while(true){
+        
+            
+        }
+        
+        //arena.desenharArena();
         //game.comecarJogo();
     }
 
@@ -72,6 +82,23 @@ public class Game implements Runnable {
             }
         }
         pararJogo();
+    }
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+       
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+          if(ke.getKeyCode() == KeyEvent.VK_S){
+         
+          }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
