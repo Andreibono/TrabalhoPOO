@@ -1,5 +1,7 @@
 package trabalhopoo;
 
+import Arquivos.ArquivoTeste;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.logging.Level;
@@ -33,12 +35,15 @@ public class Game implements Runnable, KeyListener{
         arena.setArena(0, 0, 1);
         arena.setArena(9, 19, 1);
         
-        
-        
+
+        ArquivoTeste arquivo = new ArquivoTeste();
+
         //arena.desenharArena();
         //game.comecarJogo();
+        
     }
 
+    
     public void comecarJogo() {
 
         estaRodando = true;
@@ -80,6 +85,7 @@ public class Game implements Runnable, KeyListener{
         }
         pararJogo();
     }
+    
 
     @Override
     public void keyTyped(KeyEvent ke) {

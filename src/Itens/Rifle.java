@@ -4,7 +4,7 @@ package Itens;
  *
  * @author Bruno
  */
-public class Rifle extends itens {
+public class Rifle extends Item {
 
     public Rifle(String nome, int coeficienteDeDano, float alcance) {
         super(nome, coeficienteDeDano, alcance);

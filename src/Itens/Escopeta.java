@@ -1,10 +1,6 @@
 package Itens;
 
-/**
- *
- * @author Bruno
- */
-public class Escopeta extends itens {
+public class Escopeta extends Item {
 
     public Escopeta(String nome, int coeficienteDeDano, float alcance) {
         super(nome, coeficienteDeDano, alcance);
