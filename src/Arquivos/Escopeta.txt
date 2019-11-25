@@ -1,2 +1,4 @@
-coeficiente de dano = 3.0;
-alcance = 2; 
+coeficiente de dano 
+3.0;
+alcance 
+ 2; 
