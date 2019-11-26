@@ -36,8 +36,8 @@ public class Game implements Runnable, KeyListener{
         arena.contruindoArena();
         arena.setArena(0, 0, 1);
         arena.setArena(9, 19, 1);
-        
-        
+       
+
         //arena.desenharArena();
         //game.comecarJogo();
         
