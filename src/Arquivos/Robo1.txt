@@ -1,4 +1,4 @@
-coeficiente de dano 
-3
-alcance 
-2
+Armadura 
+5
+movimento
+4

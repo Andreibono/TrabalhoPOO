@@ -1,7 +1,7 @@
 package Itens;
 
 import Arquivos.ArquivoTeste;
-import personagens.Jogador;
+import personagens.Robo;
 
 public class Virus extends Item {
 
@@ -11,8 +11,8 @@ public class Virus extends Item {
 
     }
 
-    public Virus(int nTurnos, String nome, int coeficienteDeDano, int alcance, int coordenadaX, int coordenadaY) {
-        super(nome, coeficienteDeDano, alcance, coordenadaX, coordenadaY);
+    public Virus(int nTurnos, String nome, int coordenadaX, int coordenadaY) {
+        super(nome, coordenadaX, coordenadaY);
         this.nTurnos = nTurnos;
     }
 
@@ -24,9 +24,9 @@ public class Virus extends Item {
         this.nTurnos = nTurnos;
     }
 
-    public void calcularDano(Jogador jogador, Virus virus) {
+    public void calcularDano(Robo robo, Virus virus) {
         for (int i = 0; i <= virus.getnTurnos(); i++) {
-            jogador.setVida(jogador.getVida() - virus.getCoeficienteDeDano());
+            robo.setVida(robo.getVida() - virus.getCoeficienteDeDano());
         }
     }
 }

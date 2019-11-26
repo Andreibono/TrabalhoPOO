@@ -8,8 +8,8 @@ public class Escopeta extends Item {
         
     }
 
-    public Escopeta(String nome, int coeficienteDeDano, int alcance, int coordenadaX, int coordenadaY) {
-        super(nome, coeficienteDeDano, alcance, coordenadaX, coordenadaY);
+    public Escopeta(String nome, int coordenadaX, int coordenadaY) {
+        super(nome, coordenadaX, coordenadaY);
     }
     
     

@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import personagens.Robo;
 
 /**
  *
@@ -41,10 +42,13 @@ public class Game implements Runnable, KeyListener{
         //arena.desenharArena();
         //game.comecarJogo();
         
-        ArquivoTeste arquivoteste = new ArquivoTeste();
         
-        Escopeta escopeta = new Escopeta("Escopeta", arquivoteste.lercoeficientedeDano("Escopeta"), arquivoteste.leralcance("Escopeta"), 0, 0);
+        Escopeta escopeta = new Escopeta("Escopeta", 0, 0);
         System.out.println("alcance: "+escopeta.getAlcance()+"\n"+"Dano: "+escopeta.getCoeficienteDeDano());
+        
+        Robo robo = new Robo (0,"Robo1", null, 0, 0, null);
+        System.out.println("Armadura: "+robo.getArmadura()+"\nMovimento: "+robo.getMovimento());
+        
         
     }
 

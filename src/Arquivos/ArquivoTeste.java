@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
-import personagens.Jogador;
 
 public class ArquivoTeste {
 
@@ -51,9 +50,49 @@ public class ArquivoTeste {
             System.out.println("Error: "+e.getMessage());
         }
     return -1;
-    } 
-   
+    }
+     
+    public int lerArmadura(String nome) {
+
+        String path = "src\\Arquivos\\" + nome + ".txt";
+        FileReader fr = null;
+
+        try(BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String line = br.readLine();
+            line = br.readLine();
+            
+            int armadura = Integer.parseInt(line);
+            return armadura;
+        
+            
+        } catch (IOException e) {
+            System.out.println("Error: "+e.getMessage());
+        }
+    return -1;
+    }  
+    
+    public int lerMovimento(String nome) {
+
+        String path = "src\\Arquivos\\" + nome + ".txt";
+        FileReader fr = null;
+
+        try(BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String line = br.readLine();
+            line = br.readLine();
+            line = br.readLine();
+            line = br.readLine();
+            
+            int movimento = Integer.parseInt(line);
+            return movimento;
+        
+            
+        } catch (IOException e) {
+            System.out.println("Error: "+e.getMessage());
+        }
+    return -1;
+    }  
 }
+
 
         /*File file = new File("src\\Arquivos\\Escopeta.txt");
          Scanner sc = null;

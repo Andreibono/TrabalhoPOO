@@ -1,4 +1,5 @@
 package Itens;
+import Arquivos.ArquivoTeste;
 
 public abstract class Item {
 
@@ -8,14 +9,16 @@ public abstract class Item {
     private Integer coordenadaX;
     private Integer coordenadaY;
 
+    ArquivoTeste arquivoteste = new ArquivoTeste();
+
     public Item() {
 
     }
 
-    public Item(String nome, int coeficienteDeDano, int alcance, int coordenadaX, int coordenadaY) {
+    public Item(String nome, int coordenadaX, int coordenadaY) {
         this.nome = nome;
-        this.coeficienteDeDano = coeficienteDeDano;
-        this.alcance = alcance;
+        this.coeficienteDeDano = arquivoteste.lercoeficientedeDano(nome);
+        this.alcance = arquivoteste.leralcance(nome);
         this.coordenadaX = coordenadaX;
         this.coordenadaY = coordenadaY;
     }
@@ -32,16 +35,8 @@ public abstract class Item {
         return coeficienteDeDano;
     }
 
-    public void setCoeficienteDeDano(int coeficienteDeDano) {
-        this.coeficienteDeDano = coeficienteDeDano;
-    }
-
     public int getAlcance() {
         return alcance;
-    }
-
-    public void setAlcance(int alcance) {
-        this.alcance = alcance;
     }
 
     public int getCoordenadaX() {
