@@ -1,11 +1,14 @@
 package trabalhopoo;
 
 import Arquivos.ArquivoTeste;
+import Itens.*;
+import Itens.Item;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import personagens.Robo;
 import visao.TelaPrincipal;
 
 /**
@@ -37,6 +40,8 @@ public class Game implements Runnable, KeyListener{
         arena.contruindoArena();
         arena.setArena(0, 0, 1);
         arena.setArena(9, 19, 1);
+       
+
         
 
         ArquivoTeste arquivo = new ArquivoTeste();
@@ -44,6 +49,14 @@ public class Game implements Runnable, KeyListener{
         
         //arena.desenharArena();
         //game.comecarJogo();
+        
+        
+        Escopeta escopeta = new Escopeta("Escopeta", 0, 0);
+        System.out.println("alcance: "+escopeta.getAlcance()+"\n"+"Dano: "+escopeta.getCoeficienteDeDano());
+        
+        Robo robo = new Robo (0,"Robo1", null, 0, 0, null);
+        System.out.println("Armadura: "+robo.getArmadura()+"\nMovimento: "+robo.getMovimento());
+        
         
     }
 

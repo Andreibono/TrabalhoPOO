@@ -1,15 +1,15 @@
 package Itens;
 
-/**
- *
- * @author Bruno
- */
 public class Rifle extends Item {
 
-    public Rifle(String nome, int coeficienteDeDano, float alcance) {
-        super(nome, coeficienteDeDano, alcance);
+    public Rifle() {
+
     }
 
+    public Rifle(String nome, int coordenadaX, int coordenadaY) {
+        super(nome, coordenadaX, coordenadaY);
+    }
+    
     
     public float calcularDano(float distancia) {
     

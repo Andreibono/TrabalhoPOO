@@ -1,0 +1,4 @@
+Armadura 
+5
+movimento
+4
