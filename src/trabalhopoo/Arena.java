@@ -35,22 +35,26 @@ public class Arena {
         this.matrizArena[x][y] = objeto;
     }
 
-    public void desenharArena() {
+    public String desenharArena() {
 
+        String str = new String("<html>");
+        
         for (int x = 0; x < comprimento; x++) {
             for (int y = 0; y < largura; y++) {
 
                 if (this.matrizArena[x][y] == 0) {
-                    System.out.print("");
+                    str = str + "";
                 }
                 
                  if (!(this.matrizArena[x][y] == 0)) {
-                    System.out.print("®");
+                    str = str + "®";
                 }
             }
-            System.out.print("\n");
+            str = str + "<br>";
+            
         }
-
+        str = str + "</html>";
+        return str;
     }
 
 }
