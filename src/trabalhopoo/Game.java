@@ -1,6 +1,8 @@
 package trabalhopoo;
 
 import Arquivos.ArquivoTeste;
+import Itens.*;
+import Itens.Item;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -35,10 +37,15 @@ public class Game implements Runnable, KeyListener{
         arena.setArena(0, 0, 1);
         arena.setArena(9, 19, 1);
         
-        ArquivoTeste arquivo = new ArquivoTeste();
+        
         //arena.desenharArena();
         //game.comecarJogo();
-        arquivo.lerArquivo();
+        
+        ArquivoTeste arquivoteste = new ArquivoTeste();
+        
+        Escopeta escopeta = new Escopeta("Escopeta", arquivoteste.lercoeficientedeDano("Escopeta"), arquivoteste.leralcance("Escopeta"), 0, 0);
+        System.out.println("alcance: "+escopeta.getAlcance()+"\n"+"Dano: "+escopeta.getCoeficienteDeDano());
+        
     }
 
     

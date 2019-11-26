@@ -2,6 +2,7 @@
 package personagens;
 
 import Itens.Item;
+import javax.swing.JOptionPane;
 
 public class Jogador extends Robo{
     private int coordenadaX;
@@ -51,7 +52,14 @@ public class Jogador extends Robo{
         this.movimento = movimento;
     }
     
-    
-    
-    
+    public void TrocarDeArma(Item item){
+        if (this.item == null)
+            this.item = item;
+        else {int i = JOptionPane.showConfirmDialog(null,"Deseja Trocar de arma ?","COnfirmação",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (i==0){
+            this.item = item;
+        }
+        }    
+    }
+
 }
