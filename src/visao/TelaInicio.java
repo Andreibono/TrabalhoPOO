@@ -16,7 +16,7 @@ public class TelaInicio implements KeyListener{
     
     private JFrame menu;
     private JPanel painel;
-    private JTextArea informacao;
+    private JLabel informacao;
     private JLabel comecarJogo;
     private JLabel sairJogo;
     
@@ -26,18 +26,21 @@ public class TelaInicio implements KeyListener{
     
         this.menu = new JFrame("THE ULTMATE MEGAZORD FIGHT");
         this.painel = new JPanel();
-        this.informacao = new JTextArea();
+        this.informacao = new JLabel();
         this.comecarJogo = new JLabel();
         this.sairJogo = new JLabel();
         
         menu.setResizable(false);
         menu.setLocationRelativeTo(null);
         menu.setVisible(true);
-        menu.setLayout(null);
         menu.setSize(400, 400);
-        menu.add(informacao);
-        informacao.setText(menu());
-        informacao.setBounds(0, 100, 400, 200);
+        menu.add(painel);
+        
+        painel.setLayout(null);
+        
+        painel.add(informacao);
+        informacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/TelaMenu.png")));
+        informacao.setBounds(0, 0, 400, 400);
         
         
        
@@ -60,9 +63,11 @@ public class TelaInicio implements KeyListener{
 
     public static String menu (){
     
-    String stringMenu = new String("   THE ULTIMATE MEGAZORD     \n" +
-                                   "          FIGHT 1.0 V       \n");
-    
+    String stringMenu = new String("<html>"
+                                   +"*******************************<br>"
+                                   +"*    THE ULTIMATE MEGAZORD    *<br>" 
+                                   +"*         FIGHT 1.0 V         *<br>"
+                                   +"*******************************</html>");
     return stringMenu;
     
     }

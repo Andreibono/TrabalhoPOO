@@ -43,7 +43,7 @@ public class Arena {
             for (int y = 0; y < largura; y++) {
 
                 if (this.matrizArena[x][y] == 0) {
-                    str = str + "";
+                    str = str + "\u0081";
                 }
                 
                  if (!(this.matrizArena[x][y] == 0)) {
