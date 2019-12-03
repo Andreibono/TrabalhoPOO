@@ -1,5 +1,8 @@
 package personagens;
 
+import Itens.Item;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Bruno
@@ -38,6 +41,10 @@ private Robo   robo;
         this.robo.setCoordenadaX(this.robo.getCoordenadaX()+1);        
     }
     
-
-
+    public void TrocarArma(Item item){
+        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja removertrocar de arma ?", "Atenção", JOptionPane.YES_NO_OPTION);
+        if ( confirma == JOptionPane.YES_OPTION){
+            this.robo.setItem(item);        
+        }
+    }
 }
