@@ -7,6 +7,7 @@ package visao;
 
 import Itens.Escopeta;
 import Itens.Rifle;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import personagens.Player;
@@ -27,41 +28,35 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
     private Rifle arma2 = new Rifle("Rifle");
     private static int quemTaJogando = 0;
     private static Arena arena;
- 
-    
+
     /*Variáveis do loop do jogo*/
     private static boolean estaRodando;
     private static Thread thread;
     private static boolean querJogar;
-    
-    
+
     /**
      * Creates new form TelaPrincipalGame
      */
     public TelaPrincipalGame(Arena arena) {
-        
+
         this.arena = arena;
         initComponents();
-        player1 = new Player( new Robo(1,"C3PO",100.00,0,0,arma));
-        player2 = new Player( new Robo(2,"TERMINATOR",200.00,9,19,arma2));
+        player1 = new Player(new Robo(1, "C3PO", 100.00, 0, 0, arma));
+        player2 = new Player(new Robo(2, "TERMINATOR", 200.00, 9, 19, arma2));
         this.arena.setArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY(), 1);
         this.arena.setArena(player2.getRobo().getCoordenadaX(), player2.getRobo().getCoordenadaY(), -1);
-        
-        
+
         this.comecarJogo();
 
-        
-  
-    
-    
     }
-    
-     public TelaPrincipalGame() {
-        
-         initComponents();
-        
+
+    public TelaPrincipalGame() {
+
+        initComponents();
+
     }
-   public void comecarJogo() {
+
+    public void comecarJogo() {
 
         estaRodando = true;
         thread = new Thread(this);
@@ -80,38 +75,64 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
 
     }
 
-    public void atualizar() {
-        
-        if(quemTaJogando == 0){
-        
+    public void atualizar() throws Exception {
+        Scanner ler = new Scanner(System.in);
+        if (quemTaJogando == 0) {
+
+            char c = (char) System.in.read();
+            if (c == 'w') {
+                player1.movimentoCima();
+            }
+            if (c == 's') {
+                player1.movimentoBaixo();
+            }
+            if (c == 'a') {
+                player1.movimentoEsquerda();
+            }
+            if (c == 'd') {
+                player1.movimentoDireita();
+            }
+
             arena.setArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY(), 1);
-        }else{
-        
-            if(quemTaJogando == 1){
+        } else {
+
+            if (quemTaJogando == 1) {
+
+                char c = (char) System.in.read();
+                if (c == 'w') {
+                    player2.movimentoCima();
+                }
+                if (c == 's') {
+                    player2.movimentoBaixo();
+                }
+                if (c == 'a') {
+                    player2.movimentoEsquerda();
+                }
+                if (c == 'd') {
+                    player2.movimentoDireita();
+                }
                 arena.setArena(player2.getRobo().getCoordenadaX(), player2.getRobo().getCoordenadaY(), -1);
             }
         }
-        
-      
+
         this.podeAtacar();
-        
-        
+
     }
 
     public void desenharTela() {
         tabuleiroArena = arena.desenharArena();
         this.jLArena.setText(tabuleiroArena);
         this.jLPlayer1.setText("<html>PLAYER 1<br>"
-                + "NOME: "+player1.getRobo().getNome()+"<br>"
-                + "VIDA: "+player1.getRobo().getVida()+"<br>"
-                + "MOVIMENTO: "+player1.getRobo().getMovimento()+"<br>"
-                + "ARMA: "+player1.getRobo().getItem().getNome()+ "<br>"
+                + "NOME: " + player1.getRobo().getNome() + "<br>"
+                + "VIDA: " + player1.getRobo().getVida() + "<br>"
+                + "MOVIMENTO: " + player1.getRobo().getMovimento() + "<br>"
+                + "ARMA: " + player1.getRobo().getItem().getNome() + "<br>"
                 + "</html>");
         this.jLPlayer2.setText("<html>PLAYER 2<br>"
-                + "NOME: "+player2.getRobo().getNome()+"<br>"
-                + "VIDA: "+player2.getRobo().getVida()+"<br>"
-                + "MOVIMENTO: "+player2.getRobo().getMovimento()+"<br>"
-                + "ARMA: "+player2.getRobo().getItem().getNome()+"<br>"
+                + "NOME: " + player2.getRobo().getNome() + "<br>"
+                + "VIDA: " + player2.getRobo().getVida() + "<br>"
+                + "MOVIMENTO: " + player2.getRobo().getMovimento() + "<br>"
+                + "ARMA: " + player2.getRobo().getItem().getNome() + "<br>"
                 + "</html>");
     }
 
@@ -119,30 +140,34 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
     public void run() {
         while (estaRodando) {
 
-            atualizar();
-            desenharTela();
             try {
-                Thread.sleep(1000 / 60);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+                atualizar();
+                desenharTela();
+                try {
+                    Thread.sleep(1000 / 60);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+
         }
         pararJogo();
     }
-     public void podeAtacar(){
-     
-     if(player1.getRobo().getCoordenadaX() == player2.getRobo().getCoordenadaX() || 
-             player1.getRobo().getCoordenadaY() == player2.getRobo().getCoordenadaY()){
-     
-         this.jBAtacar.setEnabled(true);
-     }else{
-         this.jBAtacar.setEnabled(false);
-     }
-     
-     
-     
-     }
-     
+
+    public void podeAtacar() {
+
+        if (player1.getRobo().getCoordenadaX() == player2.getRobo().getCoordenadaX()
+                || player1.getRobo().getCoordenadaY() == player2.getRobo().getCoordenadaY()) {
+
+            this.jBAtacar.setEnabled(true);
+        } else {
+            this.jBAtacar.setEnabled(false);
+        }
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
