@@ -31,10 +31,15 @@ public class Arena {
     }
 
     public void setArena(int x, int y, int objeto) {
-
-        this.matrizArena[x][y] = objeto;
-    }
-
+        if(x < 10 && x >= 0 ){
+            if(y < 20 && y >=0){
+                if(this.matrizArena[x][y] == 0){
+                    this.matrizArena[x][y] = objeto;
+    
+        }
+    
+            }
+        }}
     public String desenharArena() {
 
         String str = new String("<html>");
@@ -44,10 +49,15 @@ public class Arena {
 
                 if (this.matrizArena[x][y] == 0) {
                     str = str + "\u0081";
-                }
+                }else{
                 
-                 if (!(this.matrizArena[x][y] == 0)) {
-                    str = str + "®";
+                     if (!(this.matrizArena[x][y] == 1)) {
+                            str = str + "©";
+                       }else{
+                            if (!(this.matrizArena[x][y] == -1)) {
+                            str = str + "®";
+                            }
+                     } 
                 }
             }
             str = str + "<br>";

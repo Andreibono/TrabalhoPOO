@@ -37,7 +37,7 @@ public class Game implements Runnable, KeyListener{
         
     }
 
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
         
         Game game = new Game();
         arena.contruindoArena();
@@ -61,7 +61,7 @@ public class Game implements Runnable, KeyListener{
        // System.out.println("Armadura: "+robo.getArmadura()+"\nMovimento: "+robo.getMovimento());
         
         
-    }
+    }*/
 
     
     public void comecarJogo() {

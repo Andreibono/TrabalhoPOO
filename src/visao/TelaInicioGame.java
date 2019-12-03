@@ -22,8 +22,7 @@ public class TelaInicioGame extends javax.swing.JFrame {
         initComponents();
         arena = new Arena(10,20);
         arena.contruindoArena();
-        arena.setArena(0, 0, 1);
-        arena.setArena(9, 19, 1);
+      
     }
 
     /**
