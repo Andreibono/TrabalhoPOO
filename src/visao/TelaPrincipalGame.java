@@ -176,7 +176,7 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jLQuemTaJogando = new javax.swing.JLabel();
         jLPlayer1 = new javax.swing.JLabel();
         jBAtacar = new javax.swing.JButton();
         jBFimTurno = new javax.swing.JButton();
@@ -225,10 +225,10 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
         jPanel4.setBackground(new java.awt.Color(0, 51, 51));
         jPanel4.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel1.setText("RODADA: JOGADOR 1");
-        jPanel4.add(jLabel1);
-        jLabel1.setBounds(0, 0, 219, 40);
+        jLQuemTaJogando.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLQuemTaJogando.setText("RODADA: JOGADOR 1");
+        jPanel4.add(jLQuemTaJogando);
+        jLQuemTaJogando.setBounds(0, 0, 219, 40);
 
         jLPlayer1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jPanel4.add(jLPlayer1);
@@ -246,6 +246,11 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
 
         jBFimTurno.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
         jBFimTurno.setText("FIM TURNO");
+        jBFimTurno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBFimTurnoActionPerformed(evt);
+            }
+        });
         jPanel4.add(jBFimTurno);
         jBFimTurno.setBounds(368, 270, 100, 23);
 
@@ -282,6 +287,14 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
     private void jLArenaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLArenaKeyPressed
 
     }//GEN-LAST:event_jLArenaKeyPressed
+
+    private void jBFimTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFimTurnoActionPerformed
+        if(quemTaJogando == 0){
+            quemTaJogando = 1;
+        }else{
+            quemTaJogando = 0;
+        }
+    }//GEN-LAST:event_jBFimTurnoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,7 +337,7 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLArena;
     private javax.swing.JLabel jLPlayer1;
     private javax.swing.JLabel jLPlayer2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLQuemTaJogando;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
