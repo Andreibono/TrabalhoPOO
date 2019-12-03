@@ -33,7 +33,7 @@ public class Game implements Runnable, KeyListener{
     public Game() {
         
         arena = new Arena(10,20);
-        player1 = new Player("Jão", new Robo(1,"C3PO",100.00,0,0,arma));
+       
         
     }
 

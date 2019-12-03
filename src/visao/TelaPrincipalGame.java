@@ -29,8 +29,8 @@ public class TelaPrincipalGame extends javax.swing.JFrame {
     public TelaPrincipalGame(Arena arena) {
         
         initComponents();
-        player1 = new Player("Jão", new Robo(1,"C3PO",100.00,0,0,arma));
-        player2 = new Player("Andrei", new Robo(2,"TERMINATOR",200.00,9,19,arma2));
+        player1 = new Player( new Robo(1,"C3PO",100.00,0,0,arma));
+        player2 = new Player( new Robo(2,"TERMINATOR",200.00,9,19,arma2));
         
         tabuleiroArena = arena.desenharArena();
         System.out.println(tabuleiroArena);
