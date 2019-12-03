@@ -25,8 +25,11 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
     private Escopeta arma = new Escopeta("Escopeta");
     private static Player player2;
     private Rifle arma2 = new Rifle("Rifle");
+    private static int quemTaJogando = 0;
     private static Arena arena;
-        /*Variáveis do loop do jogo*/
+ 
+    
+    /*Variáveis do loop do jogo*/
     private static boolean estaRodando;
     private static Thread thread;
     private static boolean querJogar;
@@ -78,8 +81,18 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
     }
 
     public void atualizar() {
-        arena.setArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY(), 1);
-        arena.setArena(player2.getRobo().getCoordenadaX(), player2.getRobo().getCoordenadaY(), -1);
+        
+        if(quemTaJogando == 0){
+        
+            arena.setArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY(), 1);
+        }else{
+        
+            if(quemTaJogando == 1){
+                arena.setArena(player2.getRobo().getCoordenadaX(), player2.getRobo().getCoordenadaY(), -1);
+            }
+        }
+        
+      
         this.podeAtacar();
         
         
