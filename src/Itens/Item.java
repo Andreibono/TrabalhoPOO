@@ -22,6 +22,13 @@ public abstract class Item {
         this.coordenadaX = coordenadaX;
         this.coordenadaY = coordenadaY;
     }
+    
+    public Item (String nome){
+        this.nome = nome;
+        this.coeficienteDeDano = arquivoteste.lercoeficientedeDano(nome);
+        this.alcance = arquivoteste.leralcance(nome);
+        
+    }
 
     public String getNome() {
         return nome;

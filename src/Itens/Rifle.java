@@ -2,8 +2,8 @@ package Itens;
 
 public class Rifle extends Item {
 
-    public Rifle() {
-
+    public Rifle(String nome){
+        super(nome);
     }
 
     public Rifle(String nome, int coordenadaX, int coordenadaY) {

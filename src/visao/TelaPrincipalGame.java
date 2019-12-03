@@ -5,6 +5,10 @@
  */
 package visao;
 
+import Itens.Escopeta;
+import Itens.Rifle;
+import personagens.Player;
+import personagens.Robo;
 import trabalhopoo.Arena;
 
 /**
@@ -14,25 +18,34 @@ import trabalhopoo.Arena;
 public class TelaPrincipalGame extends javax.swing.JFrame {
 
     private String tabuleiroArena;
+    private static Player player1;
+    private Escopeta arma = new Escopeta("Escopeta");
+    private static Player player2;
+    private Rifle arma2 = new Rifle("Rifle");
+    
     /**
      * Creates new form TelaPrincipalGame
      */
     public TelaPrincipalGame(Arena arena) {
+        
         initComponents();
+        player1 = new Player("Jão", new Robo(1,"C3PO",100.00,0,0,arma));
+        player2 = new Player("Andrei", new Robo(2,"TERMINATOR",200.00,9,19,arma2));
+        
         tabuleiroArena = arena.desenharArena();
         System.out.println(tabuleiroArena);
         this.jLArena.setText(tabuleiroArena);
         this.jLPlayer1.setText("<html>PLAYER 1<br>"
-                + "NOME: <br>"
-                + "VIDA: <br>"
-                + "MOVIMENTO: <br>"
-                + "ARMA: <br>"
+                + "NOME: "+player1.getRobo().getNome()+"<br>"
+                + "VIDA: "+player1.getRobo().getVida()+"<br>"
+                + "MOVIMENTO: "+player1.getRobo().getMovimento()+"<br>"
+                + "ARMA: "+player1.getRobo().getItem().getNome()+ "<br>"
                 + "</html>");
         this.jLPlayer2.setText("<html>PLAYER 2<br>"
-                + "NOME: <br>"
-                + "VIDA: <br>"
-                + "MOVIMENTO: <br>"
-                + "ARMA: <br>"
+                + "NOME: "+player2.getRobo().getNome()+"<br>"
+                + "VIDA: "+player2.getRobo().getVida()+"<br>"
+                + "MOVIMENTO: "+player2.getRobo().getMovimento()+"<br>"
+                + "ARMA: "+player2.getRobo().getItem().getNome()+"<br>"
                 + "</html>");
         
         this.jBAtacar.setEnabled(false);

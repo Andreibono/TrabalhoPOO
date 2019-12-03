@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import personagens.Player;
 import personagens.Robo;
 
 /**
@@ -24,12 +25,15 @@ public class Game implements Runnable, KeyListener{
     /*Arena*/
     private static Arena arena; 
 
+    private static Player player1;
+    private Escopeta arma = new Escopeta("escopeta");
     
     
     
     public Game() {
         
         arena = new Arena(10,20);
+        player1 = new Player("Jão", new Robo(1,"C3PO",100.00,0,0,arma));
         
     }
 
@@ -39,7 +43,7 @@ public class Game implements Runnable, KeyListener{
         arena.contruindoArena();
         arena.setArena(0, 0, 1);
         arena.setArena(9, 19, 1);
-       
+        System.out.println(player1.getRobo().getNome());
 
         
 
@@ -50,11 +54,11 @@ public class Game implements Runnable, KeyListener{
         //game.comecarJogo();
         
         
-        Escopeta escopeta = new Escopeta("Escopeta", 0, 0);
-        System.out.println("alcance: "+escopeta.getAlcance()+"\n"+"Dano: "+escopeta.getCoeficienteDeDano());
+        //Escopeta escopeta = new Escopeta("Escopeta", 0, 0);
+       // System.out.println("alcance: "+escopeta.getAlcance()+"\n"+"Dano: "+escopeta.getCoeficienteDeDano());
         
-        Robo robo = new Robo (0,"Robo1", null, 0, 0, null);
-        System.out.println("Armadura: "+robo.getArmadura()+"\nMovimento: "+robo.getMovimento());
+       // Robo robo = new Robo (0,"Robo1", null, 0, 0, null);
+       // System.out.println("Armadura: "+robo.getArmadura()+"\nMovimento: "+robo.getMovimento());
         
         
     }

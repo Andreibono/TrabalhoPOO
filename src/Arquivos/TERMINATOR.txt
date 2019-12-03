@@ -1,0 +1,4 @@
+Armadura 
+10
+Movimento 
+2

@@ -4,13 +4,16 @@ import Arquivos.ArquivoTeste;
 
 public class Escopeta extends Item {
 
-   public Escopeta (){
-        
+    
+    
+   public Escopeta (String nome){
+        super(nome);
     }
 
     public Escopeta(String nome, int coordenadaX, int coordenadaY) {
         super(nome, coordenadaX, coordenadaY);
     }
+    
     
     
 

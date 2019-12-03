@@ -1,4 +1,0 @@
-coeficiente de dano 
-3
-alcance 
-2
