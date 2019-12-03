@@ -9,7 +9,6 @@ import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import personagens.Robo;
-import visao.TelaPrincipal;
 
 /**
  *
@@ -24,7 +23,7 @@ public class Game implements Runnable, KeyListener{
     
     /*Arena*/
     private static Arena arena; 
-    private static TelaPrincipal tela;
+
     
     
     
@@ -45,7 +44,7 @@ public class Game implements Runnable, KeyListener{
         
 
         ArquivoTeste arquivo = new ArquivoTeste();
-        tela = new TelaPrincipal(arena, 2);
+        
         
         //arena.desenharArena();
         //game.comecarJogo();
