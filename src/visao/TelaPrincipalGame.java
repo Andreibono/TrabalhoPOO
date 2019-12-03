@@ -78,7 +78,7 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
     public void atualizar() throws Exception {
         Scanner ler = new Scanner(System.in);
         if (quemTaJogando == 0) {
-
+            this.jLQuemTaJogando.setText("RODADA: JOGADOR 1");
             char c = (char) System.in.read();
             if (c == 'w') {
                 player1.movimentoCima();
@@ -95,7 +95,8 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
 
             arena.setArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY(), 1);
         } else {
-
+            
+            this.jLQuemTaJogando.setText("RODADA: JOGADOR 2");
             if (quemTaJogando == 1) {
 
                 char c = (char) System.in.read();
