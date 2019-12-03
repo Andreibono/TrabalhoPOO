@@ -22,16 +22,20 @@ private Robo   robo;
     }
     
     public void movimentoDireita(){
-        this.robo.setCoordenadaX(this.robo.getCoordenadaX()+1);        
-    }
-    public void movimentoEsquerda(){
-        this.robo.setCoordenadaX(this.robo.getCoordenadaX()-1);        
-    }
-    public void movimentoCima(){
+        if (this.robo.getCoordenadaY()<20)
         this.robo.setCoordenadaY(this.robo.getCoordenadaY()+1);        
     }
-    public void movimentoBaixo(){
+    public void movimentoEsquerda(){
+        if (this.robo.getCoordenadaY()>0)
         this.robo.setCoordenadaY(this.robo.getCoordenadaY()-1);        
+    }
+    public void movimentoCima(){
+        if (this.robo.getCoordenadaX()>0)
+        this.robo.setCoordenadaX(this.robo.getCoordenadaX()-1);        
+    }
+    public void movimentoBaixo(){
+        if (this.robo.getCoordenadaX()<10)
+        this.robo.setCoordenadaX(this.robo.getCoordenadaX()+1);        
     }
     
 

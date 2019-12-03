@@ -42,10 +42,11 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
         this.arena = arena;
         initComponents();
         player1 = new Player(new Robo(1, "C3PO", 100.00, 0, 0, arma));
-        player2 = new Player(new Robo(2, "TERMINATOR", 200.00, 9, 19, arma2));
+        player2 = new Player(new Robo(2, "TERMINATOR", 200.00, 0, 1, arma2));
         this.arena.setArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY(), 1);
         this.arena.setArena(player2.getRobo().getCoordenadaX(), player2.getRobo().getCoordenadaY(), -1);
 
+        this.desenharTela();
         this.comecarJogo();
 
     }
@@ -76,47 +77,56 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
     }
 
     public void atualizar() throws Exception {
-        Scanner ler = new Scanner(System.in);
+        this.podeAtacar();
         if (quemTaJogando == 0) {
             this.jLQuemTaJogando.setText("RODADA: JOGADOR 1");
+            Scanner ler = new Scanner(System.in);
             char c = (char) System.in.read();
+            System.out.println(c);
+            
             if (c == 'w') {
                 player1.movimentoCima();
+                System.out.println("" + player1.getRobo().getCoordenadaX());
+                arena.setArena(player1.getRobo().getCoordenadaX() + 1, player1.getRobo().getCoordenadaY(), 0);                
             }
             if (c == 's') {
                 player1.movimentoBaixo();
+                arena.setArena(player1.getRobo().getCoordenadaX() - 1, player1.getRobo().getCoordenadaY(), 0);
             }
             if (c == 'a') {
                 player1.movimentoEsquerda();
+                arena.setArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY() + 1, 0);
             }
             if (c == 'd') {
                 player1.movimentoDireita();
+                arena.setArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY() - 1, 0);
             }
-
             arena.setArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY(), 1);
         } else {
-            
-            this.jLQuemTaJogando.setText("RODADA: JOGADOR 2");
+                                 
             if (quemTaJogando == 1) {
-
+                this.jLQuemTaJogando.setText("RODADA: JOGADOR 2");
+                Scanner ler = new Scanner(System.in);
                 char c = (char) System.in.read();
                 if (c == 'w') {
                     player2.movimentoCima();
+                    arena.setArena(player2.getRobo().getCoordenadaX() + 1, player2.getRobo().getCoordenadaY(), 0); 
                 }
                 if (c == 's') {
                     player2.movimentoBaixo();
+                    arena.setArena(player2.getRobo().getCoordenadaX() - 1, player2.getRobo().getCoordenadaY(), 0);
                 }
                 if (c == 'a') {
                     player2.movimentoEsquerda();
+                    arena.setArena(player2.getRobo().getCoordenadaX(), player2.getRobo().getCoordenadaY() + 1, 0);
                 }
                 if (c == 'd') {
                     player2.movimentoDireita();
+                    arena.setArena(player2.getRobo().getCoordenadaX(), player2.getRobo().getCoordenadaY() - 1, 0);
                 }
                 arena.setArena(player2.getRobo().getCoordenadaX(), player2.getRobo().getCoordenadaY(), -1);
             }
         }
-
-        this.podeAtacar();
 
     }
 
@@ -290,9 +300,9 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_jLArenaKeyPressed
 
     private void jBFimTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFimTurnoActionPerformed
-        if(quemTaJogando == 0){
+        if (quemTaJogando == 0) {
             quemTaJogando = 1;
-        }else{
+        } else {
             quemTaJogando = 0;
         }
     }//GEN-LAST:event_jBFimTurnoActionPerformed
