@@ -2,3 +2,5 @@ Armadura
 5
 movimento
 4
+vida
+100

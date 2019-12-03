@@ -1,4 +1,6 @@
-coeficiente de dano 
-3
-alcance 
+Armadura 
+10
+movimento
 2
+vida
+100

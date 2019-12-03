@@ -22,7 +22,7 @@ public class Robo {
     public Robo(int id, String nome, Double vida, int coordenadaX, int coordenadaY, Item item) {
         this.id = id;
         this.nome = nome;
-        this.vida = vida;
+        this.vida = arquivoteste.lerVida(nome);
         this.armadura = arquivoteste.lerArmadura(nome);
         this.coordenadaX = coordenadaX;
         this.coordenadaY = coordenadaY;

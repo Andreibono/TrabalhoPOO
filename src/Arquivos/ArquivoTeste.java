@@ -90,7 +90,30 @@ public class ArquivoTeste {
             System.out.println("Error: "+e.getMessage());
         }
     return -1;
-    }  
+    }
+    
+    public Double lerVida(String nome) {
+
+        String path = "src\\Arquivos\\" + nome + ".txt";
+        FileReader fr = null;
+
+        try(BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String line = br.readLine();
+            line = br.readLine();
+            line = br.readLine();
+            line = br.readLine();
+            line = br.readLine();
+            line = br.readLine();
+            
+            Double vida = Double.parseDouble(line);
+            return vida;
+        
+            
+        } catch (IOException e) {
+            System.out.println("Error: "+e.getMessage());
+        }
+    return -1.0;
+    }   
 }
 
 
