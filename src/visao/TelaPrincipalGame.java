@@ -265,12 +265,12 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
     this.rifles1 = new Rifle("Rifle");
     this.rifles2 = new Rifle("Rifle");
     this.rifles3 = new Rifle("Rifle");
-    this.bombas1 = new Bomba();
-    this.bombas2 = new Bomba();
-    this.bombas3 = new Bomba();
-    this.virus1 = new Virus();
-    this.virus2 = new Virus();
-    this.virus3 = new Virus();
+    this.bombas1 = new Bomba("Bomba");
+    this.bombas2 = new Bomba("Bomba");
+    this.bombas3 = new Bomba("Bomba");
+    this.virus1 = new Virus(3,"Virus");
+    this.virus2 = new Virus(3,"Virus");
+    this.virus3 = new Virus(3,"Virus");
     
     
     this.escopetas1.randomX();
@@ -286,6 +286,21 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
     this.rifles2.randomY();
     this.rifles3.randomX();
     this.rifles3.randomY();
+    
+    this.bombas1.randomX();
+    this.bombas1.randomY();
+    this.bombas2.randomX();
+    this.bombas2.randomY();
+    this.bombas3.randomX();
+    this.bombas3.randomY();
+    
+    this.virus1.randomX();
+    this.virus1.randomY();
+    this.virus2.randomX();
+    this.virus2.randomY();
+    this.virus3.randomX();
+    this.virus3.randomY();
+    
  
     
     }
@@ -487,6 +502,12 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
         arena.setArena(this.escopetas2.getCoordenadaX(), this.escopetas2.getCoordenadaY(), 2);
         arena.setArena(this.escopetas3.getCoordenadaX(), this.escopetas3.getCoordenadaY(), 2);
         
+        arena.setArena(this.bombas1.getCoordenadaX(), this.bombas1.getCoordenadaY(), 4);
+        arena.setArena(this.virus1.getCoordenadaX(), this.virus1.getCoordenadaY(),5);
+        arena.setArena(this.bombas2.getCoordenadaX(), this.bombas2.getCoordenadaY(), 4);
+        arena.setArena(this.virus2.getCoordenadaX(), this.virus2.getCoordenadaY(),5);
+        arena.setArena(this.bombas3.getCoordenadaX(), this.bombas3.getCoordenadaY(), 4);
+        arena.setArena(this.virus3.getCoordenadaX(), this.virus3.getCoordenadaY(),5);
 
     }
 }
