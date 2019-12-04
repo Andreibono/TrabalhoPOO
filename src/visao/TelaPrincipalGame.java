@@ -5,8 +5,11 @@
  */
 package visao;
 
+import Itens.Bomba;
 import Itens.Escopeta;
 import Itens.Rifle;
+import Itens.Virus;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,11 +31,29 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
     private Rifle arma2 = new Rifle("Rifle");
     private static int quemTaJogando = 0;
     private static Arena arena;
-
+    private int movimentoplayer1; 
+    private int movimentoPlayer2; 
+    private int movimento1; 
+    private int movimento2; 
+    //armas da arena 10
+    private Escopeta escopetas1;
+    private Escopeta escopetas2;
+    private Escopeta escopetas3;
+    private Rifle  rifles1;
+    private Rifle  rifles2;
+    private Rifle  rifles3;
+    private Virus  virus1;
+    private Virus  virus2;
+    private Virus  virus3;
+    private Bomba  bombas1;
+    private Bomba  bombas2;
+    private Bomba  bombas3;
+    
     /*Variáveis do loop do jogo*/
     private static boolean estaRodando;
     private static Thread thread;
     private static boolean querJogar;
+    private Random gerador;
 
     /**
      * Creates new form TelaPrincipalGame
@@ -41,11 +62,17 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
 
         this.arena = arena;
         initComponents();
+        
+        gerarArmas();
+        colocarArmasArena();
+        
         player1 = new Player(new Robo(1, "C3PO", 100.00, 0, 0, arma));
         player2 = new Player(new Robo(2, "TERMINATOR", 200.00, 0, 1, arma2));
         this.arena.setArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY(), 1);
         this.arena.setArena(player2.getRobo().getCoordenadaX(), player2.getRobo().getCoordenadaY(), -1);
-
+        movimentoplayer1= movimento1 = player1.getRobo().getMovimento();
+        movimentoPlayer2= movimento2 = player2.getRobo().getMovimento();
+        
         this.desenharTela();
         this.comecarJogo();
 
@@ -78,53 +105,86 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
 
     public void atualizar() throws Exception {
         this.podeAtacar();
-        if (quemTaJogando == 0) {
+        if (quemTaJogando == 0 && movimento1 != 0) {
             this.jLQuemTaJogando.setText("RODADA: JOGADOR 1");
             Scanner ler = new Scanner(System.in);
             char c = (char) System.in.read();
-            System.out.println(c);
+       
             
             if (c == 'w') {
+                if(!((player1.getRobo().getCoordenadaX()- 1) == player2.getRobo().getCoordenadaX() && 
+                player1.getRobo().getCoordenadaY() == player2.getRobo().getCoordenadaY())){
                 player1.movimentoCima();
-                System.out.println("" + player1.getRobo().getCoordenadaX());
-                arena.setArena(player1.getRobo().getCoordenadaX() + 1, player1.getRobo().getCoordenadaY(), 0);                
+                arena.setArena(player1.getRobo().getCoordenadaX() + 1, player1.getRobo().getCoordenadaY(), 0);
+                movimento1 = movimento1 -1;                
+                }
             }
             if (c == 's') {
+                if(!((player1.getRobo().getCoordenadaX() + 1) == player2.getRobo().getCoordenadaX() && 
+                player1.getRobo().getCoordenadaY() == player2.getRobo().getCoordenadaY())){
                 player1.movimentoBaixo();
                 arena.setArena(player1.getRobo().getCoordenadaX() - 1, player1.getRobo().getCoordenadaY(), 0);
+                movimento1 = movimento1 -1;
+            }
             }
             if (c == 'a') {
+            if(!((player1.getRobo().getCoordenadaY() + 1) == player2.getRobo().getCoordenadaY() && 
+            player1.getRobo().getCoordenadaX() == player2.getRobo().getCoordenadaX())){
                 player1.movimentoEsquerda();
                 arena.setArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY() + 1, 0);
+                movimento1 = movimento1 -1;
             }
+            }    
             if (c == 'd') {
+                if(!((player1.getRobo().getCoordenadaY() + 1) == player2.getRobo().getCoordenadaY() && 
+                (player1.getRobo().getCoordenadaX()) == player2.getRobo().getCoordenadaX() )){
                 player1.movimentoDireita();
                 arena.setArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY() - 1, 0);
+                movimento1 = movimento1 -1;
+                }
             }
             arena.setArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY(), 1);
+           
         } else {
                                  
-            if (quemTaJogando == 1) {
+            if (quemTaJogando == 1 && movimento2 != 0) {
                 this.jLQuemTaJogando.setText("RODADA: JOGADOR 2");
                 Scanner ler = new Scanner(System.in);
                 char c = (char) System.in.read();
                 if (c == 'w') {
+                     if(!((player2.getRobo().getCoordenadaX() - 1) == player1.getRobo().getCoordenadaX() && 
+                    player1.getRobo().getCoordenadaY() == player2.getRobo().getCoordenadaY())){
                     player2.movimentoCima();
                     arena.setArena(player2.getRobo().getCoordenadaX() + 1, player2.getRobo().getCoordenadaY(), 0); 
+                    movimento2 = movimento2 -1;
+                     }
                 }
                 if (c == 's') {
+                 if(!((player2.getRobo().getCoordenadaX() + 1) == player1.getRobo().getCoordenadaX() && 
+                    player1.getRobo().getCoordenadaY() == player2.getRobo().getCoordenadaY())){
                     player2.movimentoBaixo();
                     arena.setArena(player2.getRobo().getCoordenadaX() - 1, player2.getRobo().getCoordenadaY(), 0);
+                    movimento2 = movimento2 -1;
+                 }
                 }
                 if (c == 'a') {
+                     if(!((player1.getRobo().getCoordenadaY() - 1) == player1.getRobo().getCoordenadaY() && 
+                    player1.getRobo().getCoordenadaX() == player2.getRobo().getCoordenadaX())){
                     player2.movimentoEsquerda();
+                    movimento2 = movimento2 -1;
                     arena.setArena(player2.getRobo().getCoordenadaX(), player2.getRobo().getCoordenadaY() + 1, 0);
                 }
+                }
                 if (c == 'd') {
+                    if(!((player2.getRobo().getCoordenadaY() + 1) == player1.getRobo().getCoordenadaY() && 
+                    player1.getRobo().getCoordenadaX() == player2.getRobo().getCoordenadaX())){
                     player2.movimentoDireita();
                     arena.setArena(player2.getRobo().getCoordenadaX(), player2.getRobo().getCoordenadaY() - 1, 0);
+                    movimento2 = movimento2 -1;
+                    }
                 }
                 arena.setArena(player2.getRobo().getCoordenadaX(), player2.getRobo().getCoordenadaY(), -1);
+                
             }
         }
 
@@ -136,13 +196,13 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
         this.jLPlayer1.setText("<html>PLAYER 1<br>"
                 + "NOME: " + player1.getRobo().getNome() + "<br>"
                 + "VIDA: " + player1.getRobo().getVida() + "<br>"
-                + "MOVIMENTO: " + player1.getRobo().getMovimento() + "<br>"
+                + "MOVIMENTO: " + movimento1 + "<br>"
                 + "ARMA: " + player1.getRobo().getItem().getNome() + "<br>"
                 + "</html>");
         this.jLPlayer2.setText("<html>PLAYER 2<br>"
                 + "NOME: " + player2.getRobo().getNome() + "<br>"
                 + "VIDA: " + player2.getRobo().getVida() + "<br>"
-                + "MOVIMENTO: " + player2.getRobo().getMovimento() + "<br>"
+                + "MOVIMENTO: " + movimento2 + "<br>"
                 + "ARMA: " + player2.getRobo().getItem().getNome() + "<br>"
                 + "</html>");
     }
@@ -150,14 +210,24 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
     /*Fazendo o loop do jogo*/
     public void run() {
         while (estaRodando) {
-
+            
             try {
                 atualizar();
                 desenharTela();
+                
                 try {
                     Thread.sleep(1000 / 60);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if(!(player1.getRobo().getVida() > 0 && player2.getRobo().getVida() > 0)){
+                    estaRodando = false;
+                    if(player1.getRobo().getVida() > 0){
+                        this.jLQuemTaJogando.setText(" VENCEDOR PLAYER 1");
+                    }else{
+                    
+                        this.jLQuemTaJogando.setText(" VENCEDOR PLAYER 2");
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -179,6 +249,40 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
 
     }
 
+    public void gerarArmas(){
+    
+    this.escopetas1 = new Escopeta("Escopeta");
+    this.escopetas2 = new Escopeta("Escopeta");
+    this.escopetas3 = new Escopeta("Escopeta");
+    this.rifles1 = new Rifle("Rifle");
+    this.rifles2 = new Rifle("Rifle");
+    this.rifles3 = new Rifle("Rifle");
+    this.bombas1 = new Bomba();
+    this.bombas2 = new Bomba();
+    this.bombas3 = new Bomba();
+    this.virus1 = new Virus();
+    this.virus2 = new Virus();
+    this.virus3 = new Virus();
+    
+    
+    this.escopetas1.randomX();
+    this.escopetas1.randomY();
+    this.escopetas2.randomX();
+    this.escopetas2.randomY();
+    this.escopetas3.randomX();
+    this.escopetas3.randomY();
+    
+    this.rifles1.randomX();
+    this.rifles1.randomY();
+    this.rifles2.randomX();
+    this.rifles2.randomY();
+    this.rifles3.randomX();
+    this.rifles3.randomY();
+ 
+    
+    }
+  
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -292,7 +396,15 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBAtacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAtacarActionPerformed
-        // TODO add your handling code here:
+        if(quemTaJogando == 0 ){
+        
+            player2.getRobo().setVida(player2.getRobo().getVida()-player1.getRobo().getItem().calcularDano());
+        }else{
+           if(quemTaJogando == 1){
+            player1.getRobo().setVida(player1.getRobo().getVida()-player2.getRobo().getItem().calcularDano());
+           
+           }
+        }
     }//GEN-LAST:event_jBAtacarActionPerformed
 
     private void jLArenaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLArenaKeyPressed
@@ -301,10 +413,12 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
 
     private void jBFimTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFimTurnoActionPerformed
         if (quemTaJogando == 0) {
-            quemTaJogando = 1;
+            quemTaJogando = 1;           
         } else {
             quemTaJogando = 0;
         }
+        movimento1 = movimentoplayer1;
+        movimento2 = movimentoPlayer2;
     }//GEN-LAST:event_jBFimTurnoActionPerformed
 
     /**
@@ -355,4 +469,16 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
+
+    private void colocarArmasArena() {
+        
+        arena.setArena(this.rifles1.getCoordenadaX(), this.rifles1.getCoordenadaY(), 3);
+        arena.setArena(this.rifles2.getCoordenadaX(), this.rifles2.getCoordenadaY(), 3);
+        arena.setArena(this.rifles3.getCoordenadaX(), this.rifles2.getCoordenadaY(), 3);
+        arena.setArena(this.escopetas1.getCoordenadaX(), this.escopetas1.getCoordenadaY(), 2);
+        arena.setArena(this.escopetas2.getCoordenadaX(), this.escopetas2.getCoordenadaY(), 2);
+        arena.setArena(this.escopetas3.getCoordenadaX(), this.escopetas3.getCoordenadaY(), 2);
+        
+
+    }
 }

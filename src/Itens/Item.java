@@ -62,4 +62,11 @@ public abstract class Item {
         this.coordenadaY = coordenadaY;
     }
 
+    public double calcularDano(){
+    
+        return 20;
+    }
+    
+
+
 }

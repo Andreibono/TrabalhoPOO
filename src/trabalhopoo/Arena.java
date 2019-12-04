@@ -55,14 +55,35 @@ public class Arena {
             for (int y = 0; y < largura; y++) {
 
                 if (this.matrizArena[x][y] == 0) {
-                    str = str + "[]";
+                    str = str + "";
                 } else {
 
-                    if (!(this.matrizArena[x][y] == 1)) {
+                    if (this.matrizArena[x][y] == 1) {
                         str = str + "©";
                     } else {
-                        if (!(this.matrizArena[x][y] == -1)) {
+                        if (this.matrizArena[x][y] == -1) {
                             str = str + "®";
+                        }else{
+                            if(this.matrizArena[x][y] == 2){
+                             //ESCOPETA
+                                str = str + "E";
+                            }else{
+                                if(this.matrizArena[x][y] == 3){
+                                //Rifle
+                                str = str + "R";
+                                }else{
+                                    if(this.matrizArena[x][y] == 4){
+                                    //bomba
+                                    str = str + "B";
+                                    }else{
+                                        if(this.matrizArena[x][y] == 5){
+                                        //virus
+                                        str = str + "V";
+                                        }
+                                    }
+                                    
+                                }
+                            }
                         }
                     }
                 }
