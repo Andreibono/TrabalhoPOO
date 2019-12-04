@@ -1,6 +1,7 @@
 package Itens;
 
 import Arquivos.ArquivoTeste;
+import java.util.Random;
 import personagens.Robo;
 
 public class Virus extends Item {
@@ -11,8 +12,8 @@ public class Virus extends Item {
 
     }
 
-    public Virus(int nTurnos, String nome, int coordenadaX, int coordenadaY) {
-        super(nome, coordenadaX, coordenadaY);
+    public Virus(int nTurnos, String nome) {
+        super(nome);
         this.nTurnos = nTurnos;
     }
 
@@ -28,5 +29,16 @@ public class Virus extends Item {
         for (int i = 0; i <= virus.getnTurnos(); i++) {
             robo.setVida(robo.getVida() - virus.getCoeficienteDeDano());
         }
+    }
+     public void randomX(){
+    
+        Random gerador = new Random();
+        this.setCoordenadaX(gerador.nextInt(10));
+    }
+    
+    public void randomY(){
+    
+         Random gerador = new Random();
+         this.setCoordenadaY(gerador.nextInt(20));
     }
 }
