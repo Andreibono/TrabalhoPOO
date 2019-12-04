@@ -114,6 +114,7 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
             if (c == 'w') {
                 if(!((player1.getRobo().getCoordenadaX()- 1) == player2.getRobo().getCoordenadaX() && 
                 player1.getRobo().getCoordenadaY() == player2.getRobo().getCoordenadaY())){
+                arena.itemArena(player1.getRobo().getCoordenadaX()-1, player1.getRobo().getCoordenadaY(), player1);
                 player1.movimentoCima();
                 arena.setArena(player1.getRobo().getCoordenadaX() + 1, player1.getRobo().getCoordenadaY(), 0);
                 movimento1 = movimento1 -1;                
@@ -122,6 +123,7 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
             if (c == 's') {
                 if(!((player1.getRobo().getCoordenadaX() + 1) == player2.getRobo().getCoordenadaX() && 
                 player1.getRobo().getCoordenadaY() == player2.getRobo().getCoordenadaY())){
+                arena.itemArena(player1.getRobo().getCoordenadaX()+1, player1.getRobo().getCoordenadaY(), player1);
                 player1.movimentoBaixo();
                 arena.setArena(player1.getRobo().getCoordenadaX() - 1, player1.getRobo().getCoordenadaY(), 0);
                 movimento1 = movimento1 -1;
@@ -130,14 +132,16 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
             if (c == 'a') {
             if(!((player1.getRobo().getCoordenadaY() + 1) == player2.getRobo().getCoordenadaY() && 
             player1.getRobo().getCoordenadaX() == player2.getRobo().getCoordenadaX())){
-                player1.movimentoEsquerda();
-                arena.setArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY() + 1, 0);
-                movimento1 = movimento1 -1;
+            arena.itemArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY()- 1, player1);
+            player1.movimentoEsquerda();
+            arena.setArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY() + 1, 0);
+            movimento1 = movimento1 -1;
             }
             }    
             if (c == 'd') {
                 if(!((player1.getRobo().getCoordenadaY() + 1) == player2.getRobo().getCoordenadaY() && 
                 (player1.getRobo().getCoordenadaX()) == player2.getRobo().getCoordenadaX() )){
+                arena.itemArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY()+1, player1);
                 player1.movimentoDireita();
                 arena.setArena(player1.getRobo().getCoordenadaX(), player1.getRobo().getCoordenadaY() - 1, 0);
                 movimento1 = movimento1 -1;
@@ -154,6 +158,7 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
                 if (c == 'w') {
                      if(!((player2.getRobo().getCoordenadaX() - 1) == player1.getRobo().getCoordenadaX() && 
                     player1.getRobo().getCoordenadaY() == player2.getRobo().getCoordenadaY())){
+                    arena.itemArena(player2.getRobo().getCoordenadaX()-1, player2.getRobo().getCoordenadaY(), player2);
                     player2.movimentoCima();
                     arena.setArena(player2.getRobo().getCoordenadaX() + 1, player2.getRobo().getCoordenadaY(), 0); 
                     movimento2 = movimento2 -1;
@@ -163,6 +168,7 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
                  if(!((player2.getRobo().getCoordenadaX() + 1) == player1.getRobo().getCoordenadaX() && 
                     player1.getRobo().getCoordenadaY() == player2.getRobo().getCoordenadaY())){
                     player2.movimentoBaixo();
+                    arena.itemArena(player2.getRobo().getCoordenadaX()+1, player2.getRobo().getCoordenadaY(), player2);
                     arena.setArena(player2.getRobo().getCoordenadaX() - 1, player2.getRobo().getCoordenadaY(), 0);
                     movimento2 = movimento2 -1;
                  }
@@ -170,6 +176,7 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
                 if (c == 'a') {
                      if(!((player1.getRobo().getCoordenadaY() - 1) == player1.getRobo().getCoordenadaY() && 
                     player1.getRobo().getCoordenadaX() == player2.getRobo().getCoordenadaX())){
+                    arena.itemArena(player2.getRobo().getCoordenadaX(), player2.getRobo().getCoordenadaY()-1, player2);
                     player2.movimentoEsquerda();
                     movimento2 = movimento2 -1;
                     arena.setArena(player2.getRobo().getCoordenadaX(), player2.getRobo().getCoordenadaY() + 1, 0);
@@ -178,6 +185,7 @@ public class TelaPrincipalGame extends javax.swing.JFrame implements Runnable {
                 if (c == 'd') {
                     if(!((player2.getRobo().getCoordenadaY() + 1) == player1.getRobo().getCoordenadaY() && 
                     player1.getRobo().getCoordenadaX() == player2.getRobo().getCoordenadaX())){
+                    arena.itemArena(player2.getRobo().getCoordenadaX(), player2.getRobo().getCoordenadaY()+1, player2);
                     player2.movimentoDireita();
                     arena.setArena(player2.getRobo().getCoordenadaX(), player2.getRobo().getCoordenadaY() - 1, 0);
                     movimento2 = movimento2 -1;

@@ -1,9 +1,7 @@
 package trabalhopoo;
+import personagens.Player;
+import Itens.*;
 
-/**
- *
- * @author Bruno
- */
 public class Arena {
 
     /*Dimensões da Arena*/
@@ -30,6 +28,18 @@ public class Arena {
         }
     }
 
+    public void itemArena (int x, int y, Player player)
+    {
+        Escopeta escopeta = new Escopeta("Escopeta");
+        Rifle rifle = new Rifle ("Rifle");
+        if (this.matrizArena[x][y]==2)
+            player.TrocarArma(escopeta);
+            this.matrizArena[x][y]=0 ;                  
+        if (this.matrizArena[x][y]==3)
+            player.TrocarArma(rifle);
+            this.matrizArena[x][y]=0 ;
+    }
+    
     public void setArena(int x, int y, int objeto) {
         if (x < 10 && x >= 0) {
             if (y < 20 && y >= 0) {
@@ -55,7 +65,7 @@ public class Arena {
             for (int y = 0; y < largura; y++) {
 
                 if (this.matrizArena[x][y] == 0) {
-                    str = str + "";
+                    str = str + "[]";
                 } else {
 
                     if (this.matrizArena[x][y] == 1) {

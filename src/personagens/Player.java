@@ -42,7 +42,7 @@ private Robo   robo;
     }
     
     public void TrocarArma(Item item){
-        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja removertrocar de arma ?", "Atenção", JOptionPane.YES_NO_OPTION);
+        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja trocar de arma ?", "Atenção", JOptionPane.YES_NO_OPTION);
         if ( confirma == JOptionPane.YES_OPTION){
             this.robo.setItem(item);        
         }
